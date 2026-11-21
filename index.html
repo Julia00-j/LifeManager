@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeManager</title>
+ 
+<meta name="theme-color" content="#007bff">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="default">
+
+<meta name="apple-mobile-web-app-title"
+      content="LifeManager">
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <main class="container">
+    <header>
+      <h1>LifeManager</h1>
+      <p>Mon espace personnel</p>
+
+      <nav>
+        <button type="button" data-page="tasks">📋 Tâches</button>
+        <button type="button" data-page="notes">📝 Notes</button>
+        <button type="button" data-page="agenda">📅 Agenda</button>
+      </nav>
+    </header>
+
+    <!-- PAGE TÂCHES -->
+    <div id="tasksPage" class="page">
+      <section>
+        <h2>Ajouter une tâche</h2>
+
+        <form id="taskForm">
+          <input id="taskInput" type="text"
+                 placeholder="Nouvelle tâche..." required>
+
+          <select id="taskPriority">
+            <option value="high">🔴 Haute</option>
+            <option value="medium" selected>🟠 Moyenne</option>
+            <option value="low">🟢 Basse</option>
+          </select>
+
+          <label>
+            Jour
+            <input id="taskDate" type="date">
+          </label>
+
+          <label>
+            Heure (facultative)
+            <input id="taskTime" type="time">
+          </label>
+
+          <button type="submit" class="primary">Ajouter</button>
+        </form>
+
+        <p id="taskCounter"></p>
+      </section>
+
+      <div class="columns">
+        <section class="column high" data-priority="high">
+          <h2>🔴 Priorité haute</h2>
+          <ul id="highTasks"></ul>
+        </section>
+
+        <section class="column medium" data-priority="medium">
+          <h2>🟠 Priorité moyenne</h2>
+          <ul id="mediumTasks"></ul>
+        </section>
+
+        <section class="column low" data-priority="low">
+          <h2>🟢 Priorité basse</h2>
+          <ul id="lowTasks"></ul>
+        </section>
+      </div>
+    </div>
+
+    <!-- PAGE NOTES -->
+    <div id="notesPage" class="page" hidden>
+      <section>
+        <h2>Mes notes</h2>
+
+        <form id="noteForm">
+          <input id="noteTitle" type="text"
+                 placeholder="Titre de la note" required>
+
+          <textarea id="noteContent"
+                    placeholder="Écris ta note..."
+                    rows="5"></textarea>
+
+          <button type="submit" class="primary">
+            Enregistrer la note
+          </button>
+        </form>
+
+        <div id="notesList"></div>
+      </section>
+    </div>
+
+    <!-- PAGE AGENDA -->
+    <div id="agendaPage" class="page" hidden>
+      <section>
+        <h2>Mon agenda</h2>
+
+        <label for="agendaDate">Choisir un jour :</label>
+        <input id="agendaDate" type="date">
+
+        <div id="agendaList"></div>
+      </section>
+    </div>
+
+  </main>
+
+</body>
+</html>
